@@ -1,0 +1,46 @@
+To insert javascript into out html file we use script tags wrap out code.
+We use the language attribute inside the opening script tags
+to specify what scripting laguage we will be using.
+In this case our value is obviously going to be javascript.
+
+Example:
+<script language="javascript">
+    javascript code
+</script>
+
+Declaring Variable
+    var variableName
+
+Functions
+    document.write()
+        -Displays whatever argument is in the parameter.
+    alert()
+        -Creates a pop up box displaying whatever argument is in the parameter.
+    prompt()
+        -Creates a pop up box that takes user input.
+        -Displays whatever argument is in the parameter 
+         (usually a string message describing the info needed).
+
+Arrays (work pretty much the same as java)
+    -Declaring an array
+        var myArray = new Array;
+    -Adding values to array
+        myArray[0]="Rush";
+        myArray[1]="Queen";
+        myArray[2]="Boston";
+    -To return the length of the myArray
+        myArray.length
+    -To return a value at a specific index in myArray
+        myArray[1]
+            return value at index 1 of the array
+            
+It is better to write your javascript in a web editor then link that file
+to your html file. 
+    -For the first line in the web editor you should type:
+        // JavaScript Document
+    -Then save the document in the same folder as the html file you wish to
+     link the javascript to.
+    -After that create the script tags and in the opening tag, add the type
+     and src attributes.
+        Example:
+            <script type="text/javascript" src="filePath"></script>

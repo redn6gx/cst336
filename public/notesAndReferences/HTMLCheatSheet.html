@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HTML Cheat Sheet</title>
+    </head>
+    <body>
+        
+        <p>Here is a link to the video this is from</p>
+        <a href="https://www.youtube.com/watch?v=UB1O30fR-EE" target="_blank">stopped video at 44:49</a>
+        
+    <!-- Headings -->
+        <h1>Heading One</h1>
+        <h2>Heading Two</h2>
+        <h3>Heading Three</h3>
+        <h4>Heading Four</h4>
+        <h5>Heading Five</h5>
+        <h6>Heading Six</h6>
+        
+    <!-- Paragraph -->
+            <!-- Type Lorem then hit tab to create dummy text-->
+        <p>
+            <!--"strong" tags make text bold-->
+            <!--"em" tags italicize text-->
+            Lorem ipsum dolor <strong>sit</strong> amet, consectetur 
+            adipisicing elit. Veritatis sunt facere, 
+            enim <em>natus</em> consectetur impedit modi! Porro 
+            sint excepturi magni iusto adipisci consequatur 
+            mollitia provident accusamus ratione quae, quasi 
+            sunt.
+        </p>
+        <p>
+            <!--"href" attribute points to location we want 
+                 to open when the wrapped text is clicked on
+                 (must be wrapped in "<a></a>" tags)-->
+            <!--"Target" attribute with "_blank" as value opens 
+                 new tab so the user does not have to leave web page-->
+                 
+            Lorem ipsum dolor sit amet, <a href="http://google.com" 
+            target="_blank">consectetur</a> adipisicing elit. Magni 
+            dolores excepturi, autem blanditiis voluptatem quibusdam
+            sed ullam voluptatibus obcaecati omnis corporis 
+            impedit animi ex suscipit exercitationem 
+            sapiente laboriosam vitae beatae.
+        </p>
+        
+    <!-- Lists -->
+        <!--Unordered List-->
+        <ul>
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+            <li>List Item 4</li>
+        </ul>
+        
+        <!--Ordered List-->
+        <ol>
+            <li>List Item 1</li>
+            <li>List Item 2</li>
+            <li>List Item 3</li>
+            <li>List Item 4</li>
+        </ol>
+        
+    <!-- Table -->
+        <!--Use for tabular data only as shown in example below-->
+        <table>
+            <thead> <!-- table head -->
+                <tr> <!-- table row -->
+                    <th>Name</th> <!-- table heading -->
+                    <th>Email</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bobby Davis</td> <!-- table data -->
+                    <td>bodavis@csumb.edu</td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td>John Doe</td> <!-- table data -->
+                    <td>johndoe@csumb.edu</td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td>Jane Doe</td> <!-- table data -->
+                    <td>janedoe@csumb.edu</td>
+                    <td>35</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <br> <!-- inserts a line break here -->
+        <hr> <!-- draws horizontal line across the page -->
+        <br>
+        
+    <!-- Forms -->
+        <!-- Forms are generally used for more advanced server side programming -->
+        <!-- The action attibute submits the form to another page (process.php in this case) -->
+        <!-- The method attibute is used to add data to a database -->
+        <form action="process.php" method="POST">
+            <!-- We use dividers here so the content inside each will
+            display on top of each other, (display on the next line), 
+            since <div> is a block element-->
+            <div>   
+                <!-- <label> tags simply label your input fields -->
+                <!-- The placeholder attribute displays the value: "Enter first name" as
+                     greyed-out text that will disappear once something else is typed
+                     inside the input box -->
+                <label>First Name</label> 
+                <input type="text" name="firstName" placeholder="Enter first name">
+            </div>
+            <br>
+            <div>
+                <label>Last Name</label>
+                <input type="text" name="lastName">
+            </div>
+            <br>
+            <div>
+                <!-- The email value in the type attribute checks for a valid email
+                     and displays an error message if the user does not type a valid email-->
+                <label>Email</label>
+                <input type="email" name="email">
+            </div>
+            <br>
+            <div>
+                <!-- The <textarea> tag creates a text box and usually has a name attibute -->
+                <!-- The text box can be resized by the user by dragging the bottom right corner around-->
+                <label>Message</label>
+                <textarea name="message"></textarea> 
+            </div>
+            <br>
+            <div>
+                <!--The <select> tag creates a selector box with options-->
+                <!--The options inside the <select> tags must be wrapped in <option> tags-->
+                <label>Gender</label>
+                <select name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">female</option>
+                </select>
+            </div>
+            <br>
+                <div>
+                    <!--with type set to number, options are limited to numbers-->
+                    <label>Age:</label>
+                    <input type="number" name="age" value="30">
+                </div>
+                <br>
+                <div>
+                    <!--with type set to date, options are limited to date-->
+                    <!--the date value also displays a little calender to choose date-->
+                    <label>Birthday:</label>
+                    <input type="date" name="birthday">
+                </div>
+                <br>
+                <!-- The submit type creates a button to send the form to the location
+                we specified in the opening <form> tag. In this case it would submit the
+                form to process.php which doesn't actually exist -->
+                <input type="submit" name="submit" value="Submit">
+        </form>
+        
+    <!-- Buttons -->
+        <!-- Buttons can be combined with java script to actually do something,
+             but in this case ours does nothing-->
+        <!-- In this example the click attribute refers to an "event" which is obviously
+             the user clicking on the button. The value "someFunction" would be the function
+             called by your javascript to execute your code. Just know this exists for now -->
+        <button click="someFunction">Click Me</button>
+        
+    <!-- Images -->
+        <!-- We must specify that the image is in the "images" folder by saying 
+        " images/'pictureName' ". If the image was inside of the same folder as 
+        our "HTMLCheatSheet.html" file, this would not be necessary -->
+        <img src="images/download.jpg">
+        
+        <div style="margin-top:500px"></div>
+    </body>
+</html>

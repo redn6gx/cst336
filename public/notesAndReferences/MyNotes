@@ -1,0 +1,50 @@
+Basic Git Commands (lines 2-5 to push to github and heroku)
+    -git status
+    -git add.
+    -git commit -m
+    -git push
+    -git remote -v
+    -git remote -u
+    -npm install
+    -npm start
+
+Running Application
+    -npm start
+    -"contol+c" to stop
+    -preview running application
+    
+HTML    
+    -ctrl + shift + b reformats text to look nicer
+
+    -Tag Attributes    
+        -All tags have attributes
+        -Provide information about an element
+        -Placed within the start tag
+        -Key/value pairs (id="someID")
+        -Examples
+            <tagname attributeName="attributevalue">content</tagName>
+                <h1 title="My Company">About Us</h1>
+                
+    -Display modes
+        -Flex Elements:
+        -Block Elements:
+            -Start on a new line (will stack vertically on each other)
+            -Take full width available
+            -Block Level Tags include: <div>,<h1>-<h6>,<p>,<form>
+        -Inline Elements:
+            -Do not start on a new line (will display horizontally from left to right "in a line")
+            -Take only the necessary width
+            -Inline Level Tags include: <span>,<img>,<a>
+            
+    -Position Values
+        fixed = top/left/bottom from edge of browser document
+        relative = t/l/r/b relative to first parent that isn't inherited
+        absolute
+        
+    -Precedence
+        1.) By specificity
+                1. style in tag
+                2. id
+                3. class
+                4. tags
+        2.) Then by last on page (last style applied)
