@@ -1,0 +1,205 @@
+/*the '*' selects everything and is good for reseting*/
+/* * {
+    margin:0;
+    padding:0;
+} */
+
+body {
+    background-color:grey;
+    color:red;
+
+/*font styling*/
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:16px;
+    font-weight:normal;
+    
+    /*same as above*/
+    font:normal  16px Arial, Helvetica, sans-serif;
+    
+/*changes space between lines of text*/
+    line-height:1.6em;
+}
+
+/*style for link states*/
+a {
+    /*removes underline on links (<a> tags)*/
+    text-decoration: none;
+    color:#000;
+}
+
+/*IMORTANT: cannot have a space after colon for the following*/
+/*applies style when havering over with cursor*/
+a:hover {
+    color:red;
+}
+
+a:active {
+    color:green;
+}
+
+/*a:visited {*/
+/*    color:yellow;*/
+/*}    */
+
+.container {
+    /*use percents when dealing with containers so they adjust size */
+    /*along with the browser*/
+    width:80%;
+    
+/*margin*/
+    /*margin is spacing outside an element (outside the border)*/
+    
+    /*adds an even amount of margin on both left and right sides*/
+    margin:auto;
+}
+
+.clr{
+    /*clears any floats above it*/
+    clear:both;
+}
+
+.box-1 {
+    /*here we are using hexidecimal for more color options*/
+    background-color:#333;
+    color:#fff;
+    
+    border-right:5px red solid;
+    border-left:5px red solid;
+    border-top:5px red solid;
+    border-bottom:5px red solid;
+    
+    /*same as above, but shorter. In above however, you can have
+    different colors on each side of the border*/
+    border:5px red solid;
+    
+/*a few more border styles*/
+    /*border-width: 3px;*/
+    /*border-bottom-width: 10px;*/
+    /*border-top-style: dotted;*/
+    
+/*padding*/
+    /*padding is the space around the element (inside the border)*/
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-right:20px;
+    padding-left:20px;
+    
+    /*same as above, but shorter*/
+    padding:20px;
+    
+    /*margin-top:20px;*/
+    margin:20px 0;
+}
+
+/*target any h1 tag inside the box-1 class*/
+.box-1 h1 {
+/*text formatting styles*/
+    font-family:Tahoma;
+    font-weight:800;
+    font-style:italic;
+    text-decoration:underline;
+    text-transform:uppercase;
+    letter-spacing:0.2em;
+    word-spacing:1em
+}
+
+.box-2 {
+    border:3px dotted #ccc;
+    padding:20px;
+    margin:20px 0;
+}
+
+.categories {
+    border:1px #ccc solid;
+    padding:10px;
+    
+    /*rounds the border*/
+    border-radius:15px;
+}
+
+.categories h2 {
+    text-align: center;
+}
+
+.categories ul {
+    /*removes padding*/
+    padding: 0;
+    padding-left:20px;
+    list-style:square;
+    
+    /*removes list style (the bullet points)*/
+    list-style: none;
+}
+
+.categories li {
+    padding-bottom:6px;
+    border-bottom:dotted 1px #333;
+    /*inserts pictures in each li item*/
+    list-style-image: url('../images/index.jpg');
+}
+
+.block{
+    float:left;
+    width:33.3%;
+    border:1px solid #ccc;
+    padding:10px;
+    
+    /*takes the padding and border into consideration*/
+    /*to fit within our specified width of 33.3%. 
+    Flexbox does this for you*/
+    box-sizing:border-box;
+}
+
+#main-block{
+    float:left;
+    width:70%;
+}
+
+#sidebar{
+    float:right;
+    width:30%;
+    background-color:#333;
+    color:#fff;
+    padding:15px;
+    box-sizing: border-box;
+}
+
+.p-box{
+    width:800px;
+    height:500px;
+    border:1px solid #000;
+    margin-top:30px;
+    position:relative;
+    background-image:url('../images/Capture2.PNG');
+    
+    /*pushed image over and down*/
+    background-position:100px 200px;
+    
+    /*stops image from repeating*/
+    background-repeat:no-repeat;
+    
+    /*centers image horizontally and vertically*/
+    background-position:center center;
+}
+
+.p-box h1{
+    /*would be pushed from the top of entire web page */
+    /*if we didn't set .p-box to position relative.*/
+    /*absolute positioned elements will be moved according to */
+    /*the closest relative object*/
+    position:absolute;
+    top:40px;
+}
+
+.p-box h2{
+    position:absolute;
+    bottom:40px;
+    right:100px;
+}
+
+.fix-me{
+    position:fixed;
+    top:400px;
+    border-style: solid;
+    background-color:blue;
+}
