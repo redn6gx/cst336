@@ -8,34 +8,34 @@ if (document.readyState == 'loading') {
 
 function ready() {
     //var removeCartItemButtons = document.getElementsByClassName('btn-danger');
-    var removeCartItemButtons = $('.btn-danger');   //jQuery1
+    var removeCartItemButtons = $('.btn-danger');
     for (var i = 0; i < removeCartItemButtons.length; i++) {
         var button = removeCartItemButtons[i];
         button.addEventListener('click', removeCartItem);
     }
 
     //var quantityInputs = document.getElementsByClassName('cart-quantity-input');
-    var quantityInputs = $('.cart-quantity-input'); //jQuery2
+    var quantityInputs = $('.cart-quantity-input');
     for (var i = 0; i < quantityInputs.length; i++) {
         var input = quantityInputs[i];
         input.addEventListener('change', quantityChanged);
     }
 
     //var addToCartButtons = document.getElementsByClassName('shop-item-button');
-    var addToCartButtons = $('.shop-item-button');  //jQuery3
+    var addToCartButtons = $('.shop-item-button');
     for (var i = 0; i < addToCartButtons.length; i++) {
         button = addToCartButtons[i];
         button.addEventListener('click', addToCartClicked);
     }
 
     //document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked);
-    $('.btn-purchase')[0].addEventListener('click', purchaseClicked);   //jQuery4
+    $('.btn-purchase')[0].addEventListener('click', purchaseClicked);
 }
 
 function purchaseClicked() {
     alert('Thank you for your purchase');
     //var cartItems = document.getElementsByClassName('cart-items')[0];
-    var cartItems = $('.cart-items')[0];    //jQuery5
+    var cartItems = $('.cart-items')[0];
     while (cartItems.hasChildNodes()) {
         cartItems.removeChild(cartItems.firstChild);
     }
