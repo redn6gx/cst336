@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopping Cart - Project 2</title>
+    <meta name="description" content="This is the description">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="js/store.js" async></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <header class="main-header">
+        <h1 class="store-name store-name-large">Beats and Beets</h1>
+    </header>
+
+    <section class="container content-section">
+        <h2 class="section-header">Items</h2>
+        <div class="shop-items">
+            <div class="shop-item">
+                <span class="shop-item-title">Beats</span>
+                <img class="shop-item-image" src="Images/beats.jpg">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">$199.99</span>
+                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+            <div class="shop-item">
+                <span class="shop-item-title">Beets</span>
+                <img class="shop-item-image" src="Images/beets.jpg">
+                <div class="shop-item-details">
+                    <span class="shop-item-price">$18.99</span>
+                    <button class="btn btn-primary shop-item-button" type="button">ADD TO CART</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="container content-section">
+        <h2 class="section-header">CART</h2>
+        <div class="cart-row">
+            <span class="cart-item cart-header cart-column">ITEM</span>
+            <span class="cart-price cart-header cart-column">PRICE</span>
+            <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+        </div>
+        <div class="cart-items">
+        </div>
+        <div class="cart-total">
+            <strong class="cart-total-title">Total</strong>
+            <span class="cart-total-price">$0</span>
+        </div>
+        <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+    </section>
+    <footer class="main-footer">
+        <div class="container main-footer-container">
+            <h3 class="store-name">B&B</h3>
+        </div>
+    </footer>
+</body>
+
+</html>

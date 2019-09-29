@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>AJAX: Sign Up Page</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body id="dummybodyid">
+  <h1> Sign Up </h1>
+    
+      First Name: <input type="text" name="fname"><br>
+      Last Name: <input type="text" name="LNAME"><br>
+      Gender: <input type="radio" name="gender" value="m"> MALE
+              <input type="radio" name="gender" value="f" Female<br><br>
+              
+      Zip Code: <input type="text" name="zip" id="zip"><br>
+      City: <span id="city"></span><br>
+      Latitude: <br>
+      Longitude: <br><br>
+      State: 
+      <select id="state" name="state">
+              <option value="">Select One</option>
+              <option value="ca"> California</option>
+              <option value="ny"> New York</option>
+              <option value="tx"> Texas</option>
+      </select><br />
+      
+      Select a County: <select id="county"></select><br><br>
+      
+      Desired Username: <input type="text" id="username" name="username"><br>
+      Password: <input type="password" id="password" name="password"><br>
+      Password Again: <input type="password" id="passwordAgain"><br>
+      
+      <input type="submit" value="Sign up!">
+      
+      <script>
+        /* global $*/
+        
+        //Displaying City from API after typing a zip code
+        $("#zip").on("change",function(){
+          alert($("#zip").val());
+        });//zip
+        
+      </script>
+</body>
+
+</html>
