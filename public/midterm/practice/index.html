@@ -1,0 +1,259 @@
+<html>
+
+<head>
+
+    <title>CST336 Midterm Exam Practice</title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+<script>
+    /*global $*/
+    
+    $.ajax({
+            method: "GET",
+            url: "https://cst336.herokuapp.com/projects/api/promo_products.php",
+            dataType: "json",
+            success: function(result, status) {
+                let i = Math.floor(Math.random() * result.length);
+                $('#product1').html(result[i].productName);
+                $('#price1').html(result[i].price);
+                $('#input1Qty').val(result[i].qty);
+                
+                let k = 0;
+                while(i == k) {
+                   k = Math.floor(Math.random() * result.length);
+                }
+                 $('#product2').html(result[k].productName);
+                 $('#price2').html(result[k].price);
+                 $('#input2Qty').val(result[k].qty);
+                 
+                 getTotal();
+            }
+        }); //ajax
+        
+</script>
+        
+
+    <style>
+
+        tr, td{
+
+            border:1px gray solid;
+
+            text-align: right;
+
+            padding:5px;
+
+        }
+
+        body, th {
+
+            text-align: center;
+
+        }
+
+        table {
+
+            margin: 0 auto;
+
+        }
+
+    </style>
+
+</head>
+<!-------------------------------------------------------------------------------------------------------------------------------->
+<body>
+
+    <h1 class="jumbotron"> End-of-Summer Sale! </h1>
+
+    <h2> Cart </h2>    
+
+    <table>
+
+    <tr>
+
+        <th>Product</th>
+
+        <th>Unit Price</th>
+
+        <th> Quantity </th>
+
+        <th>Total</th>
+
+    </tr>
+
+    <tr>
+
+        <td id="product1"> </td>
+
+        <td id="price1"> </td>
+
+        <td><input type="text" size="5" name="input" id="input1Qty"></td>
+
+        <td id="total1"> </td>
+
+    </tr>
+
+     <tr>
+
+        <td id="product2"> </td>
+
+        <td id="price2"> </td>
+
+        <td><input type="text" size="5" name="input" id="input2Qty"></td>
+
+        <td id="total2"> </td>
+
+    </tr>
+
+    <tr>
+
+        <td>Discount</td>
+
+        <td> </td>
+
+        <td> </td>
+
+        <td id="discount"> </td>
+
+    </tr>
+
+   <tr>
+
+        <td>Shipping</td>
+
+        <td> </td>
+
+        <td> </td>
+
+        <td id="shipping"> </td>
+
+    </tr>    
+
+    <tr>
+
+        <td>Subtotal</td>
+
+        <td> </td>
+
+        <td> </td>
+
+        <td id="subtotal"> </td>   
+
+    </tr>             
+
+
+
+    <tr>
+
+        <td>Tax (10%)</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td id="tax"> </td>       
+
+    </tr>
+
+      <tr>
+
+        <td>Total</td>
+
+        <td></td>
+
+        <td></td>
+
+        <td id="total"> </td>
+
+    </tr>
+
+    </table>
+
+    <br><br>
+
+    <strong>Promo Code: </strong> <input type="text" id="promoCode"> <button id="applyButton">Apply</button>
+    <div id="error"></div>
+   
+
+    <h3>Shipping & handling</h3>
+    <label>Shipping & handling</label> 
+    <select id="shippingOptions">
+        <option value="25">Next-day Delivery: $25.00</option>
+        <option value="20">Three-day Delivery: $20.00</option>
+        <option value="7">Regular Delivery: $7.00</option>
+    </select>
+<!----------------------------------------------------------------------------------------------------------------------------------------------->
+<script>
+    /*global $*/
+    
+    var discount;
+    
+    function getTotal(){
+        let total1 = $('#input1Qty').val() * $('#price1').html();
+        $('#total1').html(total1);
+        //return total1;
+        
+        let total2 = $('#input2Qty').val() * $('#price2').html();
+        $('#total2').html(total2);
+        
+        let shipping = $('#shippingOptions').val();
+        $('#shipping').html(shipping);
+        
+        let subtotal = total1 + total2 + parseInt(shipping) - discount;
+        $('#subtotal').html(subtotal);
+        
+        let tax = subtotal * .10;
+        $('#tax').html(tax);
+        
+        let total = subtotal + tax;
+        $('#total').html(total);
+        
+        // this works too
+        // let total = total1 + total2 - parseInt($('#discount').html().substring(1));
+        // $('#total').html(total);
+    }
+    
+        function updateTotal(target){
+        $(target).change(function(){
+                getTotal();
+            });
+    }
+    
+        $(document).ready(function() {
+            
+            $('#applyButton').click(function(){
+                if ($('#promoCode').val() == "greatdeal" || $('#promoCode').val() == "summersale" || $('#promoCode').val() == "clearance") {
+                    $.ajax({
+                        method: "GET",
+                        url: "https://cst336.herokuapp.com/projects/api/promo_codes.php?promoCode=",
+                        dataType: "json",
+                        data: { "promoCode": $("#promoCode").val() },
+                        success: function(result, status) {
+                            $('#discount').html("-" + result.discount);
+                            discount = result.discount;
+                            getTotal();
+                            $('#error').html("");
+                        }
+                    }); //ajax
+                } else {
+                    $('#error').html("<strong>Promo code doesn't exist!</strong>");
+                    $('#error').css("color", "red");
+                }
+            }); //click
+            
+            updateTotal('#input1Qty');
+            updateTotal('#input2Qty');
+            
+            $('#shippingOptions').change(function(){
+                getTotal();
+            });
+            
+        }); //ready
+</script>
+
+</body>
+
+</html>

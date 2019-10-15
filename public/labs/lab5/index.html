@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 5</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+        crossorigin="anonymous">
+        <script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+			  
+		<style>
+			.images {
+			 width: 50%;
+			 border-radius: 8px;
+			 border: solid;
+			}
+			
+			#imageContainer {
+			     display: flex;
+			     justify-content: center; 
+			}
+		</style>
+    </head>
+    
+    <body>
+        <center>
+            <div>
+                <h1 font size="10" ><strong>Pixabay Image Search</strong></h1>
+            </div>
+            <div>
+                <label>Keyword: </label> <input type="text" id="searchBar" name="searchBar">
+                <br>
+                <label>Orientation: </label>
+                <select id="orientation">
+            	    <option value="horizontal">Horizontal</option>
+            	    <option value="vertical">Veriticle</option>
+                </select>
+                <button id="search">Search</button>
+            </div>
+        </center>
+        
+        <hr> <!-- divider line-->
+        
+        <center id="imageContainer">
+            <div class="imgContainer">
+                <div id="likes1"></div>
+                <img id="image1" src="" alt="pic1" class="images" />
+            </div>
+            
+            <div class="imgContainer">
+                <div id="likes2"></div>
+                <img id="image2" src="" alt="pic2" class="images" />
+            </div>
+            
+            <div class="imgContainer">
+                <div id="likes3"></div>
+                <img id="image3" src="" alt="pic3" class="images" />
+            </div>
+            
+            <div class="imgContainer">
+                <div id="likes4"></div>
+                <img id="image4" src="" alt="pic4" class="images" />
+            </div>
+        </center>
+        
+        <script>
+            /* global $*/
+            $('document').ready(function() {
+                
+                $('#imageContainer').hide();
+                
+                $('#search').click(function() {
+                    $.ajax({
+                        method: "GET",
+                        url: "https://pixabay.com/api/",
+                        dataType: "json",
+                        data: { "key": "13831350-7dc9348462437c2a53efaa734", "q": $('#searchBar').val(), "orientation": $("#orientation").val(), "image_type": "vector" },
+                        success: function(result, status) {
+                            let a = Math.floor(Math.random() * result.hits.length);
+                            $('#image1').attr('src', result.hits[a].largeImageURL);
+                            
+                            let b = a;
+                            while(b == a){
+                                b = Math.floor(Math.random() * result.hits.length);
+                                $('#image2').attr('src', result.hits[b].largeImageURL);
+                            }
+                            let c = b;
+                            while(c == a || c == b){
+                                c = Math.floor(Math.random() * result.hits.length);
+                                $('#image3').attr('src', result.hits[c].largeImageURL);
+                            }
+                            let d = c;
+                            while(d == a || d == b || d == c){
+                                d = Math.floor(Math.random() * result.hits.length);
+                                $('#image4').attr('src', result.hits[d].largeImageURL);
+                            }
+                            
+                            $('#likes1').html("likes: " + result.hits[a].likes);
+                            $('#likes2').html("likes: " + result.hits[b].likes);
+                            $('#likes3').html("likes: " + result.hits[c].likes);
+                            $('#likes4').html("likes: " + result.hits[d].likes);
+                            
+                            $('#imageContainer').show();
+                        } //success
+                    }); //ajax
+                }); //click listener
+            }); //ready
+        </script>
+    </body>
+</html>

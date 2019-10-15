@@ -1,0 +1,193 @@
+<html>
+<head>
+    <title></title>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+    <style>
+        tr, td{
+            border:1px gray solid;
+            text-align: right;
+            padding:5px;
+        }
+
+        body, th {
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="jumbotron"> Holiday Shopping  </h1>
+
+    <h2> Cart </h2>
+
+    <table>
+    <tr>
+        <th>Product</th>
+        <th>Unit Price</th>
+        <th> Quantity </th>
+        <th>Total</th>
+    </tr>
+
+    <tr>
+        <td>Fruit Cake</td>
+        <td>$30</td>
+        <td><input type="text" class="qty" id="qty_item1" size="5" value="1">  </td>
+        <td id="totalItem1">$30</td>
+    </tr>
+
+    <tr>
+        <td>Piñata (Medium size)</td>
+        <td>$20</td>
+        <td><input type="text" class="qty" id="qty_item2" size="5" value="2">  </td>
+        <td id="totalItem2">$40</td>
+    </tr>
+
+   <tr>
+        <td>Shipping</td>
+        <td></td>
+        <td> </td>
+        <td id="shippingCost">$10</td>
+    </tr>    
+
+    <tr>
+        <td>Subtotal</td>
+        <td> </td>
+        <td> </td>
+        <td id="subtotal">$80</td>
+    </tr>             
+
+    <tr>
+        <td>Tax (10%)</td>
+        <td></td>
+        <td></td>
+        <td id="tax">$8</td>
+    </tr>
+
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td id="total">$88</td>
+    </tr>
+    </table>
+
+    <h3>Shipping & handling</h3>
+    <br><br>
+    <div id="shippingOptions">
+        <input type="radio" id="nextDay" name="shipping"> <label>Next-Day Delivery: $15.00</label>
+        <br>
+        <input type="radio" id="threeDay" name="shipping"> <label>Three-Day Delivery: $10.00</label>
+        <br>
+        <input type="radio" id="regular" name="shipping"> <label>Regular-Shipping: $5.00</label>
+    </div>
+    <div>
+        <input type="checkbox" id="terms" name="terms">
+        <span id="termsMessage" >I accept the terms of this purchase.</span>
+    </div>
+    
+
+    <br><br>
+
+    <input type="submit" value="CONFIRM PURCHASE" />
+    
+    <script>
+    /*global $*/
+            // declare global variables
+            var total1;
+            var total2;
+            var subtotal;
+            var total;
+            var shipping;
+            var tax;
+            
+        $(document).ready(function() {
+            // inititalize variables here
+            total1 = 30;
+            total2 = 40;
+            subtotal = 80;
+            total = 88;
+            shipping = 10;
+            tax = 8;
+        
+            $('#qty_item1').change(function(){
+                //console.log($('#qty_item1').val());
+                
+                total1 = $('#qty_item1').val() * 30;
+                $('#totalItem1').html("$" + total1);
+            });
+            
+            $('#qty_item2').change(function(){
+                //console.log($('#qty_item2').val());
+                
+                total2 = $('#qty_item2').val() * 20;
+                $('#totalItem2').html("$" + total2);
+            });
+            
+            // radio buttons with the same name are all recognized as part of the same group
+            // this way the browser will know to only keep one button checked at a time
+            $('#shippingOptions').click(function() {
+                // if ($(':radio').is(':checked')) { alert("it's checked");
+                // // $('#shippingCost').html();
+                // }
+                
+                if ($('#nextDay').is(':checked')) {
+                    // alert("next day");
+                    $('#shippingCost').html("$ " + 15);
+                    
+                    shipping = 15;
+                }
+                if ($('#threeDay').is(':checked')) {
+                    // alert("three day");
+                    $('#shippingCost').html("$ " + 10);
+                    
+                    shipping = 10;
+                }
+                if ($('#regular').is(':checked')) {
+                    // alert("regular");
+                    $('#shippingCost').html("$ " + 5);
+                    
+                    shipping = 5;
+                }
+                
+            });
+            
+            $('*').change(function(){
+                 subtotal = total1 + total2 + shipping;
+                 $('#subtotal').html("$" + subtotal);
+                 
+                 tax = .10 * subtotal;
+                 $('#tax').html("$" + tax);
+                 
+                 total = subtotal + tax;
+                 $('#total').html("$ " + total);
+            });
+
+            $(':submit').click(function(){
+                // alert("this is working");
+                
+                // this works too
+                // if (!$("input[name='shipping']:checked").val()) {
+                //     // alert('Nothing is checked!');
+                //     $('#shippingOptions label').css("color", "red");
+                // }
+                
+                if (!$(':radio').is(':checked')) {
+                    $('#shippingOptions label').css("color", "red");
+                }
+                
+            });
+
+        });// document ready
+    </script>
+    
+</body>
+</html>

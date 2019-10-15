@@ -1,0 +1,18 @@
+body{
+    background-color: #bdd7e4 !important;
+}
+
+#footerParagraph{
+    text-align: center;
+    color: yellow;
+}
+
+div{
+    margin: auto;
+    text-align: center;
+    width: 30%;
+}
+
+hr{
+    width: 70%;
+}

@@ -39,7 +39,20 @@
         
         //Displaying City from API after typing a zip code
         $("#zip").on("change",function(){
-          alert($("#zip").val());
+          //alert($("#zip").val());
+          $.ajax({
+            method: "GET",
+            url: "https://cst336.herokuapp.com/projects/api/cityInfoAPI.php",
+            dataType: "json",
+            data:   {"zip" : $("#zip").val() },
+            success: function(result, status) {
+          
+              // All the information sent by the API is stored in the “result” variable
+              alert(result.city);
+          
+            }
+          }); //ajax
+
         });//zip
         
       </script>

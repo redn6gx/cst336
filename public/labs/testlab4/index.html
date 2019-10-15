@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>AJAX: Sign Up Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+</head>
+
+<body id="dummybodyid" class="bg-info">
+    <div class="jumbotron">
+        <h1> Sign Up Form </h1>
+    </div>
+
+    <div id="formContainer">
+        <form id="signupForm" method="get" action="welcome.html">
+            <fieldset>
+                <legend>Sign Up</legend>
+                <div><label>First Name:</label><input id="firstName" type="text"><span id="noNameError"></span></div>
+                <div><label>Last Name:</label><input id="lastName" type="text"></div>
+                <div><label>Email:</label><input id="email" type="text"><span id="emailError"></span></div>
+                <div><label>Phone Number:</label><input type="text"></div>
+                <div><label>Zip Code:</label><input type="text" name="zip" id="zip"><span id="invalidZip"></span></div>
+                <div><label>City:</label><span id="city"></span></div>
+                <div><label>Latitude: <span id="latitude"></span></label></div>
+                <div><label>Longitude: <span id="longitude"></span></label></div>
+                <div><label>State:</label><input id="stateslist" list="states"><datalist id="states"></datalist><span id="stateError"></span></div>
+                <!---<div><label>State:</label><input id="state" type="text" maxlength="2"></div> -->
+                <div><label>Select a County:</label><select id="county"></select></div>
+                <div><label>Desired Username:</label><input id="username" type="text">
+                    <span id="usernameError"></span></br>
+                </div>
+                <div><label>Password:</label><input id="password" type="password">
+                    <span id="passwordError"></span></br>
+                </div>
+                <div><label>Type Password Again:</label><input id="passwordAgain" type="password">
+                    <span id="passwordAgainError"></span></br>
+                </div>
+                </br>
+                <div class="text-center"><input type="submit" value="Sign up!" class="btn btn-primary"></div>
+            </fieldset>
+        </form>
+    </div>
+
+    <footer>
+        <hr>
+        <div id="disclaimerText">
+            Internet Programming. 2019&copy; Buckley and Davis<br />
+            <strong>Disclamer:</strong> The information in this page is ficitious. <br /> It is used for academic purposes only.
+            </br>
+            <img id="csumblogo" src="img/csumblogo.png" alt="CSUMB Logo" />
+        </div>
+
+    </footer>
+
+    <script src="js/function.js"></script>
+</body>
+
+</html>

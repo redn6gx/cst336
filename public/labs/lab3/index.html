@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>US Quiz</title>
+        <!--<link href="css/styles.css" rel="stylesheet" type="text/css" />-->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         rel="stylesheet"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
@@ -14,123 +15,6 @@
         <script src = "https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"> </script>
         
         
-        <script>
-		/*global $*/
-		/*global _*/
-		    $(document).ready(function() {
-		        
-		        //Global Variables
-		        var score = 0;
-		        
-		        //event Listeners
-		        //"Submit Quiz" button
-		        $("button").on("click", gradeQuiz);
-		        
-		        //Question 5 images
-		        $(".q5Choice").on("click", function() {
-		        		$(".q5Choice").css("background","");
-		        		$(this).css("background","rgb(255, 255, 0)");
-		        });
-		        
-		        
-		        displayChoices();
-		        
-		        function displayChoices(){
-		        	
-		        	let q4ChoicesArray = ["Maine", "Rhode Island", "Maryland", "Delaware"];
-		        	q4ChoicesArray = _.shuffle(q4ChoicesArray);
-		        	
-		        	for (let i = 0; i < q4ChoicesArray.length; i++) {
-		        		$("#q4Choices").append(` <input type="radio" name="q4" id="${q4ChoicesArray[i]}"
-		        			value="${q4ChoicesArray[i]}"> <label for="${q4ChoicesArray[i]}"> ${
-		        				q4ChoicesArray[i]}</label>`);
-		        	}
-		        }
-		        
-		        //functions
-		        function isFormValid(){
-		            let isValid = true;
-		            if ($("#q1").val() == "") {
-		                isValid = false;
-		                $("#validationFdbk").html("Question 1 was not answered");
-		            }
-		            return isValid;
-		        }
-		        
-		        function rightAnswer(index){
-		        	 $(`#q${index}Feedback`).html("Correct!");
-		             $(`#q${index}Feedback`).attr("class", "bg-success text-white");
-		             $(`#markImg${index}`).html("<img src='img/checkmark.png' alt='checkmark'>");
-		             score += 20;
-		        }
-		        
-		        function wrongAnswer(index){
-		        	$(`#q${index}Feedback`).html("Incorrect!");
-		            $(`#q${index}Feedback`).attr("class", "bg-warning text-white");
-		            $(`#markImg${index}`).html("<img src='img/xmark.png' alt='xmark'>");
-		        }
-		        
-		        function gradeQuiz(){
-		            
-		            $("#validationFdbk").html(""); //resets validation feedback
-		            
-		            if (!isFormValid()) {
-		                return;
-		            }
-		            
-		            //variables
-		            score = 0
-		            let q1Response = $("#q1").val().toLowerCase();
-		            let q2Response = $("#q2").val();
-		            let q4Response = $("input[name=q4]:checked").val();
-		            
-		            //Question 1
-		            if(q1Response == "sacramento") {
-		                rightAnswer(1);
-		            }
-		            else {
-		                wrongAnswer(1);
-		            }
-		            
-		            //Question 2
-		            if(q2Response == "mo") {
-		                rightAnswer(2);
-		            }
-		            else {
-		                wrongAnswer(2);
-		            }
-		            
-		            //Question 3
-		            if ( $("#Jefferson").is(":checked") && $("#Roosevelt").is(":checked")
-		            	&& !$("#Jackson").is(":checked") && !$("#Franklin").is(":checked") ){
-		            	rightAnswer(3);
-		            }
-		            else {
-		            	wrongAnswer(3);
-		            }
-		            
-		            //Question 4
-		            if(q4Response == "Rhode Island") {
-		            	rightAnswer(4);
-		            }
-		            else {
-		            	wrongAnswer(4);
-		            }
-		            
-		            //Question 5
-		            if ($("#seal2").css("background-color") == "rgb(255, 255, 0)") {
-		            	rightAnswer(5);
-		            }
-		            else {
-		            	wrongAnswer(5);
-		            }
-		            
-		            $("#totalScore").html(`Total Score: ${score}`);
-		            
-		        }
-		        
-		    })//ready        
-		</script>	  
     </head>
     <body class="text-center">
         
@@ -179,5 +63,8 @@
         <button type="button" class="btn btn-success">Submit Quiz</button>
         <br>
         <h2 id="totalScore" class="text-info"></h2>
+        
+        <script src="js/function.js"></script>
+        
     </body>
 </html>
