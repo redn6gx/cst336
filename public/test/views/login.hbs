@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>login test</title>
+        {{!--<link href="public/css/login.css" rel="stylesheet" type="text/css" />--}}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    
+    <body class="text-center">
+    <div>Here is an account to log in</div>
+    <div>Username: test Password: test</div>
+    <div>
+        <div>
+            username
+            <input id="username" type="text">
+        </div>
+        <div>
+            password
+            <input id="password" type="text">
+        </div>
+        <div>
+            <button id="login">Login</button>
+        </div>
+    </div>
+    
+        
+        <script>
+            $(document).ready(function() {
+
+    //event listener
+    $("#login").on('click', login);
+
+    function login() {
+        console.log($("#password").val());
+
+        $.ajax({
+            type: "POST",
+            url: "/test/login",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify({
+                "username": $("#username").val(),
+                "password": $("#password").val(),
+            }),
+            success: function(data, status) {
+                console.log("got data back", data);
+                if (data.error) {
+                    $("#errorMessage").html(data.error).css('color', 'red');
+                }
+                else {
+                    window.location.href = "/test/dashboard";
+                }
+            },
+            error: function(xhr, status, error) {
+                error = eval("(" + xhr.responseText + ")");
+                console.error(error);
+            },
+            complete: function(data, status) { //optional, used for debugging purposes
+                console.log(status);
+            }
+        }); //AJAX
+    } //login
+});
+
+        </script>
+        
+    </body>
+</html>

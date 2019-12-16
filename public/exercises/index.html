@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+<script>
+    var word = "";
+    
+    function reverse(word , x) {
+        let reverseWord = word.split("").reverse().join("");
+        if(x){
+            x(word);
+        }
+    }
+    console.log(reverse('hello'));
+    
+    reverse(word, function(reverseWord){
+       return reverseWord; 
+    });
+    
+</script>
+</body>
+
+</html>
