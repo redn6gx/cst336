@@ -88,3 +88,14 @@
 #header {
    background-color: #f1f1f1;
 }
+
+
+#myBtn {
+  background-color: green;
+  color: white;
+}
+
+#logout {
+  background-color: orange;
+  font-family: fantasy;
+}
